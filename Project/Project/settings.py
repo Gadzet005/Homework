@@ -3,8 +3,10 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-# Достаем переменные из .env файла
-load_dotenv("example.env")
+# Достаем переменные из .env и default.env файлов
+# Переменные из .env будут перекрывать переменные из default.env
+load_dotenv(".env")
+load_dotenv("default.env")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
