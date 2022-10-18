@@ -2,7 +2,7 @@
 
 ![flake8 test](https://github.com/Gadzet005/SuperHomework/actions/workflows/python-package.yml/badge.svg)
 
-## Инструкция по установке
+## Инструкция по установке:
 - Загрузите проект: 
   ```
   git clone https://github.com/Gadzet005/SuperHomework
@@ -27,4 +27,13 @@
   ```
   python Project/manage.py runserver
   ```
-### Вы можете создать файл .env в корневой папке и определить переменные окружения. Пример такого файла - example.env
+# Настройка:
+- По умолчаюнию в проекте используются dev настройки. Переключить с dev на production можно изменив строку в файле Project/manage.py:
+  ```
+  os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.dev')
+  ```
+  На:
+  ```
+  os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.production')
+  ```
+- Вы можете создать файл .env в корневой папке и определить переменные окружения. Пример такого файла - example.env
