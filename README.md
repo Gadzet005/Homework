@@ -17,7 +17,7 @@
   ```
 - Зайдите в него (**Зависит от ОС, эта команда работает для винды**): 
   ```
-  venv/Scripts/Activate.bat
+  venv\Scripts\activate
   ```
 - Загрузите внешние зависимости: 
   ```
@@ -28,12 +28,9 @@
   python Project/manage.py runserver
   ```
 # Настройка:
-- По умолчаюнию в проекте используются dev настройки. Переключить с dev на production можно изменив строку в файле Project/manage.py:
+- По умолчаюнию в проекте используются dev настройки. Выбрать dev или production можно установив переменную окружения (**работает для винды**):
   ```
-  os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.dev')
-  ```
-  На:
-  ```
-  os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.production')
+  set DJANGO_SETTINGS_MODULE=settings.dev
+  set DJANGO_SETTINGS_MODULE=settings.production
   ```
 - Вы можете создать файл .env в корневой папке и определить переменные окружения. Пример такого файла - example.env
