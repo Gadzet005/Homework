@@ -28,9 +28,4 @@
   python Project/manage.py runserver
   ```
 # Настройка:
-- По умолчаюнию в проекте используются dev настройки. Выбрать dev или production можно установив переменную окружения (**работает для винды**):
-  ```
-  set DJANGO_SETTINGS_MODULE=settings.dev
-  set DJANGO_SETTINGS_MODULE=settings.production
-  ```
-- Вы можете создать файл .env в корневой папке и определить переменные окружения. Пример такого файла - example.env
+- Вы можете создать файл .env в корневой папке и определить переменные окружения. Пример такого файла - .env-example
