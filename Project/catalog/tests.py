@@ -10,7 +10,7 @@ class URLTests(TestCase):
 
     def test_item_detail(self):
         positive_pk_list = [1, 12, 100]
-        negative_pk_list = [0, -1, 1.1, '000111', 'Hello', "1%201"]
+        negative_pk_list = [0, -1, 1.1, '000111', 'Hello', '1%201']
 
         # Проверяем позитивные тесты
         for test_pk in positive_pk_list:
