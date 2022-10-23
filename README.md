@@ -1,6 +1,8 @@
 # Дополнительное задание
 
-![flake8 test](https://github.com/Gadzet005/SuperHomework/actions/workflows/python-package.yml/badge.svg)
+![Python test](https://github.com/Gadzet005/SuperHomework/actions/workflows/python-package.yml/badge.svg)
+
+![Django test](https://github.com/Gadzet005/SuperHomework/actions/workflows/django.yml/badge.svg)
 
 ## Инструкция по установке:
 - Загрузите проект: 
