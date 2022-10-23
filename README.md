@@ -1,4 +1,4 @@
-# Дополнительное задание
+# Домашка
 
 ![Python test](https://github.com/Gadzet005/SuperHomework/actions/workflows/python-package.yml/badge.svg)
 
@@ -29,5 +29,5 @@
   ```
   python Project/manage.py runserver
   ```
-# Настройка:
+## Настройка:
 - Вы можете создать файл .env в корневой папке и определить переменные окружения. Пример такого файла - .env-example
