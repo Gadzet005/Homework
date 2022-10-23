@@ -1,21 +1,34 @@
 from pathlib import Path
 
+import environ
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DJANGO_APPS = (
+env = environ.Env()
+environ.Env.read_env(".env")
+
+
+SECRET_KEY = env.str("SECRET_KEY", default="This is not secret")
+
+DEBUG = env.bool("DEBUG", default=True)
+
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
+
+
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-)
+]
 
-LOCAL_APPS = (
+LOCAL_APPS = [
     'homepage.apps.HomepageConfig',
     'catalog.apps.CatalogConfig',
     'about.apps.AboutConfig',
-)
+]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
