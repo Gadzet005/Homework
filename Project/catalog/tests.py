@@ -17,6 +17,7 @@ class URLTests(TestCase):
 
         for expected_code, pk_list in pk_tests.items():
             for pk in pk_list:
-                with self.subTest('Тест сatalog pk', pk=pk):
+                with self.subTest('Тест: catalog/pk', pk=pk):
                     response = Client().get(f'/catalog/{pk}/')
-                    self.assertEqual(response.status_code, expected_code)
+                    msg = f'От /catalog/{pk}/ ожидался код {expected_code}'
+                    self.assertEqual(response.status_code, expected_code, msg)
