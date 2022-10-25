@@ -11,7 +11,7 @@ class URLTests(TestCase):
     def test_item_detail(self):
         # Тестовые случаи
         pk_tests = {
-            200: (1, 12, 100, -1),
+            200: (1, 12, 100),
             404: (0, -1, 1.1, '000111', 'Hello', '1 1')
         }
 
