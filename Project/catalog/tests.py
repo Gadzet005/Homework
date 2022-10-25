@@ -9,21 +9,19 @@ class URLTests(TestCase):
             )
 
     def test_item_detail(self):
-        positive_pk_list = [1, 12, 100]
-        negative_pk_list = [0, -1, 1.1, '000111', 'Hello', '1%201']
+        def test_item_pk(pk, expected_code):
+            response = Client().get(f'/catalog/{pk}/')
+            with self.subTest(
+                    'Элемент каталога вернул неправильный статус', pk=pk
+                    ):
+                self.assertEqual(response.status_code, expected_code)
 
-        # Проверяем позитивные тесты
-        for test_pk in positive_pk_list:
-            response = Client().get(f'/catalog/{test_pk}/')
-            self.assertEqual(
-                response.status_code, 200,
-                f'Страница предмета с pk={test_pk} должна быть найдена'
-                )
+        # Тестовые случаи
+        pk_tests = {
+            200: (1, 12, 100),
+            404: (0, -1, 1.1, '000111', 'Hello', '1 1')
+        }
 
-        # Проверяем негативные тесты
-        for test_pk in negative_pk_list:
-            response = Client().get(f'/catalog/{test_pk}/')
-            self.assertEqual(
-                response.status_code, 404,
-                f'Страница предмета с pk={test_pk} не должна быть найдена'
-                )
+        for expected_code, pk_list in pk_tests.items():
+            for pk in pk_list:
+                test_item_pk(pk, expected_code)
