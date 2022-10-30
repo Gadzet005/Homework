@@ -1,7 +1,6 @@
 # Домашка
 
 ![Python test](https://github.com/Gadzet005/SuperHomework/actions/workflows/python-package.yml/badge.svg)
-
 ![Django test](https://github.com/Gadzet005/SuperHomework/actions/workflows/django.yml/badge.svg)
 
 ## Инструкция по установке:
@@ -31,3 +30,7 @@
   ```
 ## Настройка:
 - Вы можете создать файл .env в корневой папке и определить переменные окружения. Пример такого файла - .env-example
+- Загрузить тестовые данные в базу данных можно прописав команду:
+  ```
+  python manage.py loaddata fixture.json
+  ```
