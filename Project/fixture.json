@@ -1,0 +1,147 @@
+[
+{
+    "model": "catalog.item",
+    "pk": 1,
+    "fields": {
+        "is_published": true,
+        "name": "Мяч",
+        "text": "Превосходно",
+        "category": 2,
+        "tags": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "catalog.item",
+    "pk": 2,
+    "fields": {
+        "is_published": false,
+        "name": "Футболка",
+        "text": "Роскошно",
+        "category": 5,
+        "tags": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "catalog.item",
+    "pk": 3,
+    "fields": {
+        "is_published": true,
+        "name": "Толстовка",
+        "text": "РОСКОШно",
+        "category": 5,
+        "tags": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "catalog.item",
+    "pk": 4,
+    "fields": {
+        "is_published": true,
+        "name": "Компьютер",
+        "text": "Превосходно",
+        "category": 4,
+        "tags": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "catalog.item",
+    "pk": 5,
+    "fields": {
+        "is_published": true,
+        "name": "Телефон",
+        "text": "превосходно",
+        "category": 4,
+        "tags": [
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "catalog.tag",
+    "pk": 1,
+    "fields": {
+        "is_published": true,
+        "name": "Популярное",
+        "slug": "populyarnoe"
+    }
+},
+{
+    "model": "catalog.tag",
+    "pk": 2,
+    "fields": {
+        "is_published": true,
+        "name": "Новинка",
+        "slug": "novinka"
+    }
+},
+{
+    "model": "catalog.tag",
+    "pk": 3,
+    "fields": {
+        "is_published": true,
+        "name": "Полезное",
+        "slug": "poleznoe"
+    }
+},
+{
+    "model": "catalog.tag",
+    "pk": 4,
+    "fields": {
+        "is_published": true,
+        "name": "Дешевое",
+        "slug": "deshevoe"
+    }
+},
+{
+    "model": "catalog.tag",
+    "pk": 6,
+    "fields": {
+        "is_published": false,
+        "name": "Для детей",
+        "slug": "dlya-detej"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "is_published": true,
+        "name": "Спорт",
+        "slug": "sport",
+        "weight": 100
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+        "is_published": true,
+        "name": "Техника",
+        "slug": "tehnika",
+        "weight": 150
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 5,
+    "fields": {
+        "is_published": true,
+        "name": "Одежда",
+        "slug": "odezhda",
+        "weight": 200
+    }
+}
+]
