@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-import catalog.models as CategoryModels
+import catalog.models as CatalogModels
 
 
 class CatalogBaseAdmin(admin.ModelAdmin):
@@ -8,21 +8,22 @@ class CatalogBaseAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'name')
 
 
-class CategoryModelAdmin(CatalogBaseAdmin):
-    list_display = ('id', 'name', 'is_published', 'slug', 'weight')
-    prepopulated_fields = {'slug': ('name',)}
-
-
-class TagModelAdmin(CatalogBaseAdmin):
-    list_display = ('id', 'name', 'is_published', 'slug')
-    prepopulated_fields = {'slug': ('name',)}
-
-
+@admin.register(CatalogModels.Item)
 class ItemModelAdmin(CatalogBaseAdmin):
+    fields = ('name', 'is_published', 'text', 'category', 'tags')
     list_display = ('id', 'name', 'is_published', 'category')
     filter_horizontal = ('tags',)
 
 
-admin.site.register(CategoryModels.Item, ItemModelAdmin)
-admin.site.register(CategoryModels.Category, CategoryModelAdmin)
-admin.site.register(CategoryModels.Tag, TagModelAdmin)
+@admin.register(CatalogModels.Category)
+class CategoryModelAdmin(CatalogBaseAdmin):
+    fields = ('name', 'is_published', 'slug', 'weight')
+    list_display = ('id', 'name', 'is_published', 'slug', 'weight')
+    prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(CatalogModels.Tag)
+class TagModelAdmin(CatalogBaseAdmin):
+    fields = ('name', 'is_published', 'slug')
+    list_display = ('id', 'name', 'is_published', 'slug')
+    prepopulated_fields = {'slug': ('name',)}

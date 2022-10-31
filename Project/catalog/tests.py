@@ -67,10 +67,10 @@ class DBTests(TestCase):
 
         for text in test_texts:
             with self.subTest('Негативный тест валидатора', text=text):
-                item = self.create_test_item(text)
+                self.item = self.create_test_item(text)
 
                 # Проверяем, что валидатор выдает ошибку
                 error_msg = f'Валидатор описания товара неправильно' \
                             f'работает на негативном тексте: {text}'
                 with self.assertRaises(ValidationError, msg=error_msg):
-                    item.full_clean()
+                    self.item.full_clean()
