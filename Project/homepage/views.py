@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.views.generic import TemplateView
 
 
-def home(request):
-    return HttpResponse("Главная страница")
+class Home(TemplateView):
+    template_name = "homepage/index.html"

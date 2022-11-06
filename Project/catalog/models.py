@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from Core.models import ProjectBaseFields, ProjectBaseModel
 from Core.validators import AmazingTextValidator
@@ -17,6 +18,9 @@ class Item(ProjectBaseModel):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+
+    def get_absolute_url(self):
+        return reverse('catalog:item_detail', kwargs={'item_id': self.pk})
 
 
 class Tag(ProjectBaseModel):

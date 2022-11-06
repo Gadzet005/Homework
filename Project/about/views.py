@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.views.generic import TemplateView
 
 
-def description(request):
-    return HttpResponse("О проекте")
+class About(TemplateView):
+    template_name = "about/about.html"
