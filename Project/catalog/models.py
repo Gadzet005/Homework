@@ -20,7 +20,8 @@ class Item(ProjectBaseModel):
         )
     tags = models.ManyToManyField('Tag', verbose_name='тег')
     preview = models.ImageField(
-        verbose_name='превью', upload_to='uploads/preview/%Y/%m'
+        verbose_name='превью', upload_to='uploads/preview/%Y/%m', null=True,
+        blank=True
         )
 
     class Meta:
