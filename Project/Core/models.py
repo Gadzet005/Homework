@@ -13,9 +13,9 @@ class ProjectBaseFields:
 
 class ProjectBaseModel(models.Model):
     is_published = models.BooleanField(
-            verbose_name='Опубликовано', default=True
+            verbose_name='опубликовано', default=True
             )
-    name = models.CharField(verbose_name='Название', max_length=150)
+    name = models.CharField(verbose_name='название', max_length=150)
 
     class Meta:
         abstract = True

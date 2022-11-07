@@ -10,8 +10,8 @@ class CatalogBaseAdmin(admin.ModelAdmin):
 
 @admin.register(CatalogModels.Item)
 class ItemModelAdmin(CatalogBaseAdmin):
-    fields = ('name', 'is_published', 'text', 'category', 'tags')
-    list_display = ('id', 'name', 'is_published', 'category')
+    fields = ('name', 'is_published', 'text', 'upload', 'category', 'tags')
+    list_display = ('id', 'name', 'is_published', 'category', 'image_tmb')
     filter_horizontal = ('tags',)
 
 

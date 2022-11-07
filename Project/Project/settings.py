@@ -24,6 +24,10 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
+MODULE_APPS = [
+    'sorl.thumbnail'
+]
+
 LOCAL_APPS = [
     'homepage.apps.HomepageConfig',
     'catalog.apps.CatalogConfig',
@@ -31,7 +35,7 @@ LOCAL_APPS = [
     'Core'
 ]
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + MODULE_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
