@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 
+from ckeditor.fields import RichTextField
 from sorl.thumbnail import get_thumbnail
 
 from Core.models import ProjectBaseFields, ProjectBaseModel
@@ -9,7 +10,7 @@ from Core.validators import AmazingTextValidator
 
 
 class Item(ProjectBaseModel):
-    text = models.TextField(
+    text = RichTextField(
         verbose_name='описание',
         validators=[AmazingTextValidator('превосходно', 'роскошно')],
         help_text='Должно создержать слова превосходно или роскошно'

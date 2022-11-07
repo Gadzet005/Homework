@@ -27,6 +27,7 @@ DJANGO_APPS = [
 MODULE_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'sorl.thumbnail',
+    'ckeditor'
 ]
 
 LOCAL_APPS = [
