@@ -18,8 +18,8 @@ class Item(ProjectBaseModel):
         'Category', verbose_name='категория', on_delete=models.CASCADE
         )
     tags = models.ManyToManyField('Tag', verbose_name='тег')
-    upload = models.ImageField(
-        verbose_name='превью', upload_to='uploads/%Y/%m'
+    preview = models.ImageField(
+        verbose_name='превью', upload_to='uploads/preview/%Y/%m'
         )
 
     class Meta:
@@ -29,17 +29,26 @@ class Item(ProjectBaseModel):
     def get_absolute_url(self):
         return reverse('catalog:item_detail', kwargs={'item_id': self.pk})
 
-    @property
-    def get_img(self):
-        return get_thumbnail(self.upload, '300x300', crop='center', quality=51)
-
+    ''' Метод, масштабирующий превью до размера 300x300 '''
     def image_tmb(self):
-        if self.upload:
-            return mark_safe(f'<img src="{self.get_img.url}">')
+        if self.preview:
+            img = get_thumbnail(
+                self.preview, '300x300', crop='center', quality=51
+                )
+            return mark_safe(f'<img src="{img.url}">')
         return 'Нет изображения'
 
-    image_tmb.short_description = 'превью'
-    image_tmb.allow_tags = True
+
+class ImageGallery(models.Model):
+    upload = models.ImageField(
+        verbose_name='картинка', upload_to='uploads/gallery/%Y/%m'
+        )
+    item = models.ForeignKey(
+        "Item", verbose_name='товар', on_delete=models.CASCADE
+        )
+
+    def __str__(self) -> str:
+        return f'Картинка №{self.pk}'
 
 
 class Tag(ProjectBaseModel):

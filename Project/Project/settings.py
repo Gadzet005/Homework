@@ -25,7 +25,8 @@ DJANGO_APPS = [
 ]
 
 MODULE_APPS = [
-    'sorl.thumbnail'
+    'django_cleanup.apps.CleanupConfig',
+    'sorl.thumbnail',
 ]
 
 LOCAL_APPS = [
