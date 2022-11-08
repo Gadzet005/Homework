@@ -10,13 +10,18 @@ class CatalogBaseAdmin(admin.ModelAdmin):
 
 @admin.register(CatalogModels.Item)
 class ItemModelAdmin(CatalogBaseAdmin):
-    fields = ('name', 'is_published', 'text', 'category', 'tags', 'preview')
+    fields = (
+        'name', 'is_published', 'text', 'category', 'tags', 'preview',
+        'image_tmb'
+        )
     list_display = ('id', 'name', 'is_published', 'category', 'image_tmb')
     filter_horizontal = ('tags',)
+    readonly_fields = ('image_tmb',)
 
     class ItemGalleryInline(admin.TabularInline):
         model = CatalogModels.ImageGallery
         extra = 0
+        readonly_fields = ('image_tmb',)
     inlines = (ItemGalleryInline, )
 
 

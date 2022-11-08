@@ -1,12 +1,12 @@
 from django.db import models
 from django.urls import reverse
-from django.utils.safestring import mark_safe
 
+from sorl.thumbnail import delete, ImageField
 from ckeditor.fields import RichTextField
-from sorl.thumbnail import get_thumbnail
 
 from Core.models import ProjectBaseFields, ProjectBaseModel
 from Core.validators import AmazingTextValidator
+from .utils import get_image_thumbnail
 
 
 class Item(ProjectBaseModel):
@@ -19,7 +19,7 @@ class Item(ProjectBaseModel):
         'Category', verbose_name='категория', on_delete=models.CASCADE
         )
     tags = models.ManyToManyField('Tag', verbose_name='тег')
-    preview = models.ImageField(
+    preview = ImageField(
         verbose_name='превью', upload_to='uploads/preview/%Y/%m', null=True,
         blank=True
         )
@@ -31,18 +31,18 @@ class Item(ProjectBaseModel):
     def get_absolute_url(self):
         return reverse('catalog:item_detail', kwargs={'item_id': self.pk})
 
-    ''' Метод, масштабирующий превью до размера 300x300 '''
     def image_tmb(self):
-        if self.preview:
-            img = get_thumbnail(
-                self.preview, '300x300', crop='center', quality=51
-                )
-            return mark_safe(f'<img src="{img.url}">')
-        return 'Нет изображения'
+        return get_image_thumbnail(self.preview)
+
+    image_tmb.short_description = 'превью'
+    image_tmb.allow_tags = True
+
+    def clear_thumbnails(self):
+        delete(self.image)
 
 
 class ImageGallery(models.Model):
-    upload = models.ImageField(
+    upload = ImageField(
         verbose_name='картинка', upload_to='uploads/gallery/%Y/%m'
         )
     item = models.ForeignKey(
@@ -51,6 +51,12 @@ class ImageGallery(models.Model):
 
     def __str__(self) -> str:
         return f'Картинка №{self.pk}'
+
+    def image_tmb(self):
+        return get_image_thumbnail(self.upload)
+
+    image_tmb.short_description = 'превью'
+    image_tmb.allow_tags = True
 
 
 class Tag(ProjectBaseModel):
