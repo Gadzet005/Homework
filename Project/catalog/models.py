@@ -49,6 +49,10 @@ class ImageGallery(models.Model):
         "Item", verbose_name='товар', on_delete=models.CASCADE
         )
 
+    class Meta:
+        verbose_name = 'картинка'
+        verbose_name_plural = 'галлерея'
+
     def __str__(self) -> str:
         return f'Картинка №{self.pk}'
 
