@@ -1,5 +1,8 @@
 from pathlib import Path
 
+from django_cleanup.signals import cleanup_pre_delete
+
+from sorl.thumbnail import delete
 import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -116,3 +119,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Очистка кэша sorl.thumbnail
+def sorl_delete(**kwargs):
+    delete(kwargs['file'])
+
+
+cleanup_pre_delete.connect(sorl_delete)

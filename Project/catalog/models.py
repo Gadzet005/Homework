@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-from sorl.thumbnail import delete, ImageField
+from sorl.thumbnail import delete
 from ckeditor.fields import RichTextField
 
 from Core.models import ProjectBaseFields, ProjectBaseModel
@@ -19,7 +19,7 @@ class Item(ProjectBaseModel):
         'Category', verbose_name='категория', on_delete=models.CASCADE
         )
     tags = models.ManyToManyField('Tag', verbose_name='тег')
-    preview = ImageField(
+    preview = models.ImageField(
         verbose_name='превью', upload_to='uploads/preview/%Y/%m', null=True,
         blank=True
         )
@@ -42,7 +42,7 @@ class Item(ProjectBaseModel):
 
 
 class ImageGallery(models.Model):
-    upload = ImageField(
+    upload = models.ImageField(
         verbose_name='картинка', upload_to='uploads/gallery/%Y/%m'
         )
     item = models.ForeignKey(
