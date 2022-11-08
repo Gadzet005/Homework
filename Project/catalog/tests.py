@@ -1,7 +1,7 @@
 from django.test import TestCase, Client
 from django.core.exceptions import ValidationError
 
-from .models import Item, Category, Tag
+from .models import Item, Category
 
 
 class URLTests(TestCase):
@@ -11,7 +11,6 @@ class URLTests(TestCase):
         cls.category = Category.objects.create(
             name='Тестовая категория', slug='cat-test-slug'
             )
-        cls.tag = Tag.objects.create(name='Тестовый тег', slug='tag-test-slug')
         cls.item = Item.objects.create(
             name='Тестовый товар', text="превосходно",
             category=cls.category
@@ -27,7 +26,7 @@ class URLTests(TestCase):
         # Тестовые случаи
         pk_tests = {
             200: (self.item.pk,),
-            404: (0, -1, 1.1, '000111', 'Hello', '1 1', 2)
+            404: (0, -1, 1.1, '000111', 'Hello', '1 1')
         }
         for expected_code, pk_list in pk_tests.items():
             for pk in pk_list:
@@ -44,7 +43,6 @@ class DBTests(TestCase):
         cls.category = Category.objects.create(
             name='Тестовая категория', slug='cat-test-slug'
             )
-        cls.tag = Tag.objects.create(name='Тестовый тег', slug='tag-test-slug')
 
     def create_test_item(self, text):
         item = Item.objects.create(
