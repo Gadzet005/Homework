@@ -18,5 +18,5 @@ class ItemDetail(DetailView):
     pk_url_kwarg = "item_id"
     context_object_name = "item"
     extra_context = {
-        'title_name': 'Детали предмета'
+        'title_name': 'Детали товара'
     }

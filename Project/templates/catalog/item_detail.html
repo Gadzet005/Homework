@@ -5,9 +5,9 @@
 <div class="container">
     <div>
         <h1>{{ item.name }}</h1>
-        <p>Описание: {{ item.text|safe }}</p>
+        <h3>Описание:</h3> {{ item.text|safe }}
+        <p>Категория: {{ item.category }}</p>
     </div>
-    Скоро сделаю нормальную страницу...
 </div>
 
 {% endblock content %}
