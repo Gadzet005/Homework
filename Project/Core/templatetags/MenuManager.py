@@ -12,9 +12,9 @@ class Menus:
     ''' Класс для хранения кастомных меню '''
 
     main_menu = [
-        MenuElem('Главная', 'homepage:home'),
-        MenuElem('Описание', 'about:about'),
-        MenuElem('Каталог', 'catalog:item_list'),
+        MenuElem('На главную', 'homepage:home'),
+        MenuElem('О проекте', 'about:about'),
+        MenuElem('Список товаров', 'catalog:item_list'),
     ]
 
 
