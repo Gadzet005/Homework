@@ -35,4 +35,5 @@
   python manage.py loaddata fixture.json
   ```
 ## ER-Диаграмма базы данных:
-![er-diagram](https://user-images.githubusercontent.com/88264036/198893006-6836153b-c62f-4f5b-a01b-c4b775451ce5.png)
+![er](https://user-images.githubusercontent.com/88264036/200836627-b08906ee-0c14-4ea8-bc04-0865e23759a5.png)
+
