@@ -14,7 +14,9 @@ class ItemModelAdmin(CatalogBaseAdmin):
         'name', 'is_published', 'is_on_main', 'text', 'category', 'tags',
         'preview', 'image_tmb'
         )
-    list_display = ('name', 'is_published', 'is_on_main', 'category', 'image_tmb')
+    list_display = (
+        'name', 'is_published', 'is_on_main', 'category', 'image_tmb'
+        )
     list_editable = ('is_published', 'is_on_main')
     filter_horizontal = ('tags',)
     readonly_fields = ('image_tmb',)
