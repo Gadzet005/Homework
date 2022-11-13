@@ -1,0 +1,31 @@
+{% load static %}
+
+<div class="col">
+    <div class="card shadow-sm">
+      
+      {% with item.image_tmb as item_image %}
+
+      {% if item_image != 'Нет изображения' %}
+      {{ item.image_tmb }}
+      {% else %}
+      <img class="col-5 card-img" src="{% static 'core/img/default_image.jpg' %}" alt="картинка">
+      {% endif %}
+
+      {% endwith %}
+
+      <div class="card-body">
+        {% for tag in item.tags.all %}
+        <small class="text-muted small-text">{{ tag.name }}</small>
+        {% endfor %}
+        <p class="card-text big-text">{{ item.name }}</p>
+        <p class="card-text">{{ item.text | truncatewords_html:10 | safe }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <a href="{{ item.get_absolute_url }}" class="btn btn-sm btn-outline-secondary small-text">Подробнее</a>
+          </div>
+          <small class="text-muted small-text">{{ item.category.name }}</small>
+        </div>
+      </div>
+
+    </div>
+  </div>

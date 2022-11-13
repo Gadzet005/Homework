@@ -1,15 +1,29 @@
+from ckeditor.fields import RichTextField
+
 from django.db import models
 from django.urls import reverse
 
-from sorl.thumbnail import delete
-from ckeditor.fields import RichTextField
-
-from Core.models import ProjectBaseFields, ProjectBaseModel
+from Core.models import ProjectBaseFields, ProjectBaseModel, ProjectBaseManager
 from Core.validators import AmazingTextValidator
 from .utils import get_image_thumbnail
 
 
+class ItemManager(ProjectBaseManager):
+    def published(self):
+        return (
+            super().published()
+            .filter(category__is_published=True)
+            .select_related('category')
+            .prefetch_related(models.Prefetch('tags', Tag.objects.published()))
+            .only('name', 'text', 'category__name', 'preview')
+        )
+
+    def on_main(self):
+        return self.published().filter(is_on_main=True)
+
+
 class Item(ProjectBaseModel):
+    is_on_main = models.BooleanField(verbose_name='На главной', default=False)
     text = RichTextField(
         verbose_name='описание',
         validators=[AmazingTextValidator('превосходно', 'роскошно')],
@@ -24,9 +38,12 @@ class Item(ProjectBaseModel):
         blank=True
         )
 
+    objects = ItemManager()
+
     class Meta:
         verbose_name = 'товар'
         verbose_name_plural = 'товары'
+        default_related_name = 'items'
 
     def get_absolute_url(self):
         return reverse('catalog:item_detail', kwargs={'item_id': self.pk})
@@ -36,9 +53,6 @@ class Item(ProjectBaseModel):
 
     image_tmb.short_description = 'превью'
     image_tmb.allow_tags = True
-
-    def clear_thumbnails(self):
-        delete(self.image)
 
 
 class ImageGallery(models.Model):

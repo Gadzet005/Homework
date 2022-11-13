@@ -10,5 +10,8 @@ def get_image_thumbnail(upload, size_string='300x300'):
         img = get_thumbnail(
             upload, size_string, crop='center', quality=99
             )
-        return mark_safe(f'<img src="{img.url}" alt="Картинка">')
+        return mark_safe(
+            f'<img class="img-thumbnail" style="height: 310px" '
+            f'src="{img.url}" alt="Картинка">'
+            )
     return 'Нет изображения'

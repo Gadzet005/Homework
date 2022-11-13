@@ -26,21 +26,16 @@
 
 <body>
 
-<header>
 <!-- Главное меню -->
 {% get_main_menu request %}
-</header>
 
-<main>
+<main class="container min-vh-100">
     {% block content %}
     Пусто...
     {% endblock content %}
 </main>
 
-<footer>
-    
-</footer>
+{% include 'footer.html' %}
 
 </body>
-
 </html>

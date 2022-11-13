@@ -48,3 +48,18 @@
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
   }
+
+.small-text {
+  font-size: 15px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.big-text {
+  font-size: 30px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.title-text {
+  font-size: 40px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}

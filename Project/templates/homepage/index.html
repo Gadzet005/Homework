@@ -4,9 +4,28 @@
 
 {% block content %}
 
-<div class="container text-center">
-    <h1>Добро пожаловать!</h1>
+<div class="text-center">
+    <h1 class="title-text">Добро пожаловать!</h1>
     <img class="w-25 h-25" src="{% static 'homepage/img/cat.png' %}" alt="Тут должен быть котик">
 </div>
+
+<hr>
+<h2 class="title-text">СУПЕР-ПУПЕР товары</h2>
+<div class="album py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        
+        {% for item in items %}
+
+        {% include 'catalog/item_card.html' %}
+
+        {% empty %}
+        <h2>Список товаров пуст</h2>
+  
+        {% endfor %}
+  
+      </div>
+    </div>
+  </div>
 
 {% endblock content %}

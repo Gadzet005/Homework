@@ -8,14 +8,16 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
-environ.Env.read_env(".env")
+environ.Env.read_env('.env')
 
 
-SECRET_KEY = env.str("SECRET_KEY", default="This is not secret")
+SECRET_KEY = env.str('SECRET_KEY', default='This is not secret')
 
-DEBUG = env.bool("DEBUG", default=True)
+DEBUG = env.bool('DEBUG', default=True)
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
+
+INTERNAL_IPS = ['127.0.0.1']
 
 
 DJANGO_APPS = [
@@ -30,7 +32,8 @@ DJANGO_APPS = [
 MODULE_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'sorl.thumbnail',
-    'ckeditor'
+    'ckeditor',
+    'debug_toolbar'
 ]
 
 LOCAL_APPS = [
@@ -50,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 ROOT_URLCONF = 'Project.urls'
@@ -109,6 +114,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+FIXTURE_DIRS = [
+    BASE_DIR / 'fixtures'
+    ]
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -119,6 +127,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+THUMBNAIL_COLORSPACE = None
+THUMBNAIL_PRESERVE_FORMAT = True
 
 
 # Очистка кэша sorl.thumbnail

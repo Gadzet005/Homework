@@ -1,0 +1,49 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "is_published": true,
+        "name": "Публичная категория",
+        "slug": "public"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "is_published": false,
+        "name": "Скрытая категория",
+        "slug": "not-public"
+    }
+},
+
+{
+    "model": "catalog.item",
+    "pk": 1,
+    "fields": {
+        "is_published": true,
+        "name": "Публичный товар",
+        "category": 1
+    }
+},
+{
+    "model": "catalog.item",
+    "pk": 2,
+    "fields": {
+        "is_published": false,
+        "name": "Скрытый товар",
+        "category": 1
+    }
+},
+{
+    "model": "catalog.item",
+    "pk": 4,
+    "fields": {
+        "is_published": true,
+        "name": "Товар со скрытой категорией",
+        "category": 2
+    }
+}
+]
+    
