@@ -15,6 +15,7 @@ class Menus:
         MenuElem('На главную', 'homepage:home'),
         MenuElem('О проекте', 'about:about'),
         MenuElem('Список товаров', 'catalog:item_list'),
+        MenuElem('Обратная связь', 'feedback:feedback'),
     ]
 
 

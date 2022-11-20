@@ -63,11 +63,10 @@ class DBTests(TestCase):
             )
 
     def create_test_item(self, text):
-        item = Item.objects.create(
+        return Item.objects.create(
             name='Тестовый товар', text=text,
             category=self.category
             )
-        return item
 
     def test_text_validator_positive(self):
         test_texts = [

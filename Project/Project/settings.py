@@ -37,10 +37,11 @@ MODULE_APPS = [
 ]
 
 LOCAL_APPS = [
+    'Core',
     'homepage.apps.HomepageConfig',
     'catalog.apps.CatalogConfig',
     'about.apps.AboutConfig',
-    'Core'
+    'feedback.apps.FeedbackConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + MODULE_APPS + LOCAL_APPS
@@ -131,6 +132,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 THUMBNAIL_COLORSPACE = None
 THUMBNAIL_PRESERVE_FORMAT = True
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 
 
 # Очистка кэша sorl.thumbnail
