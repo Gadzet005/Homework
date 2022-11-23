@@ -46,7 +46,7 @@ class FormTest(TestCase):
         feedback_count = Feedback.objects.count()
 
         response = self.post_form(good_form_data)
-        self.assertRedirects(response, reverse("feedback:feedback"))
+        self.assertRedirects(response, reverse("homepage:home"))
 
         response = self.post_form(bad_form_data)
         self.assertEqual(response.redirect_chain, list())

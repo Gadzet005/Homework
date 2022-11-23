@@ -8,6 +8,7 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
+
 environ.Env.read_env('.env')
 
 
@@ -136,6 +137,7 @@ THUMBNAIL_PRESERVE_FORMAT = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+OWNER_EMAIL = env.str('OWNER_EMAIL', default='default@gmail.com')
 
 
 # Очистка кэша sorl.thumbnail
