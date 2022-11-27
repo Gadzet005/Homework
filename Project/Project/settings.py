@@ -39,6 +39,7 @@ MODULE_APPS = [
 
 LOCAL_APPS = [
     'Core',
+    'Users.apps.UsersConfig',
     'homepage.apps.HomepageConfig',
     'catalog.apps.CatalogConfig',
     'about.apps.AboutConfig',
@@ -138,6 +139,8 @@ THUMBNAIL_PRESERVE_FORMAT = True
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 OWNER_EMAIL = env.str('OWNER_EMAIL', default='default@gmail.com')
+
+AUTH_USER_MODEL = 'Users.User'
 
 
 # Очистка кэша sorl.thumbnail

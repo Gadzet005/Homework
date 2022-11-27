@@ -9,7 +9,7 @@ class MenuElem:
 
 
 class Menus:
-    ''' Класс для хранения кастомных меню '''
+    ''' Класс для хранения меню '''
 
     main_menu = [
         MenuElem('На главную', 'homepage:home'),
