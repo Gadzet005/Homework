@@ -6,16 +6,20 @@ from .models import User
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
-    readonly_fields = ('date_joined', 'is_active', 'last_login')
+    readonly_fields = ('date_joined', 'last_login')
     list_display = (
-        'username', 'email', 'birthday_date', 'is_staff', 'is_superuser'
+        'nickname', 'email', 'birthday_date', 'is_staff', 'is_superuser'
         )
+    ordering = ('nickname',)
+    search_fields = ('nickname', 'email')
+    list_display_links = ('nickname',)
+
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         (
             'Персональная информация', {
                 'fields': (
-                    'username', 'birthday_date'
+                    'nickname', 'birthday_date'
                     )
             }
         ),
@@ -28,4 +32,10 @@ class UserAdmin(BaseUserAdmin):
             }
         ),
         ('Важные даты', {'fields': ('last_login', 'date_joined')}),
+    )
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('email', 'nickname', 'password1', 'password2'),
+        }),
     )

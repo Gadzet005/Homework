@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from django.urls.base import reverse_lazy
 from django_cleanup.signals import cleanup_pre_delete
 
 from sorl.thumbnail import delete
@@ -141,6 +142,8 @@ EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 OWNER_EMAIL = env.str('OWNER_EMAIL', default='default@gmail.com')
 
 AUTH_USER_MODEL = 'Users.User'
+LOGIN_URL = reverse_lazy('users:login')
+LOGIN_REDIRECT_URL = reverse_lazy('homepage:home')
 
 
 # Очистка кэша sorl.thumbnail

@@ -5,16 +5,18 @@
 
 <div class="row bg-light">
     {% if item.preview %}
-    <img class="col-5 img-thumbnail" src="{{ item.preview.url }}" alt="картинка">
+    <img class="col-4 img-thumbnail m-2" src="{{ item.preview.url }}" alt="картинка">
     {% else %}
-    <img class="col-5 img-thumbnail" src="{% static 'core/img/default_image.jpg' %}" alt="картинка">
+    <img class="col-4 img-thumbnail m-2" src="{% static 'core/img/default_image.jpg' %}" alt="картинка">
     {% endif %}
     <div class="col-7">
         <h1 class="text-center title-text">{{ item.name }}</h1>
-        <p class="big-text">Описание:</p>{{ item.text | safe }}
-        <p class="big-text">Категория: {{ item.category }}</p>
-        <p class="big-text">Теги: {{ item.tags.all | join:", " }}</p>
+        <h3>Описание:</h3>{{ item.text | safe }}
+        <h3>Категория: {{ item.category }}</h3>
+        <h3>Теги: {{ item.tags.all | join:", " }}</h3>
+    </div>
+    <div class="text-center my-3">
+        <a class="btn btn-primary" href="{% url 'catalog:item_list' %}"><h3>К списку товаров</h3></a>
     </div>
 </div>
-
 {% endblock content %}

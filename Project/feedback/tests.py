@@ -3,52 +3,42 @@ from django.urls import reverse
 
 from .models import Feedback
 from .forms import FeedbackForm
+from Users.models import User
 
 
 class FormTest(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.form = FeedbackForm()
-
-    def post_form(self, data):
-        return Client().post(
-            reverse("feedback:feedback"), data=data, follow=True
+        cls.user = User.objects.create_user(
+            email='test@gmail.com', password='test-password', nickname='test'
             )
+        cls.client = Client()
 
     def test_context(self):
         must_contains = ["title_name", "form_title", "form"]
 
-        response = Client().get(reverse("feedback:feedback"))
+        self.client.login(username='test@gmail.com', password='test-password')
+
+        response = self.client.get(reverse("feedback:feedback"))
         for elem in must_contains:
             self.assertIn(elem, response.context)
 
     def test_form_fields(self):
-        email = self.form.fields["email"]
-        self.assertEqual(email.label, "Почта")
-        self.assertEqual(
-            email.help_text,
-            "Введите вашу почту, чтобы мы могли связаться с вами"
-            )
-
-        text = self.form.fields["text"]
+        form = FeedbackForm()
+        text = form.fields["text"]
         self.assertEqual(text.label, "Текст")
         self.assertEqual(text.help_text, "Введите ваше сообщение")
 
     def test_create_feedback(self):
-        good_form_data = {
-            "email": "test@example.com", "text": "Тестовый текст"
-            }
-        bad_form_data = {
-            "email": "not-valid", "text": "Тестовый текст"
-            }
-
         feedback_count = Feedback.objects.count()
 
-        response = self.post_form(good_form_data)
-        self.assertRedirects(response, reverse("homepage:home"))
+        self.client.login(username='test@gmail.com', password='test-password')
 
-        response = self.post_form(bad_form_data)
-        self.assertEqual(response.redirect_chain, list())
+        response = self.client.post(
+            reverse("feedback:feedback"), data={'text': 'TestText'},
+            follow=True
+            )
+        self.assertRedirects(response, reverse("homepage:home"))
 
         self.assertEqual(Feedback.objects.count(), feedback_count + 1)

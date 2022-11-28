@@ -5,5 +5,5 @@ from .models import Feedback
 
 @admin.register(Feedback)
 class FeedBackAdmin(admin.ModelAdmin):
-    fields = ('email', 'text')
-    readonly_fields = ('email', 'text')
+    fields = ('user', 'text')
+    readonly_fields = ('user', 'text')

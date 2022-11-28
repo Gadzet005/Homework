@@ -1,9 +1,8 @@
 from django.urls import path, re_path
 
 from . import views
-from .apps import CatalogConfig
 
-app_name = CatalogConfig.name
+app_name = 'catalog'
 
 urlpatterns = [
     path('', views.ItemList.as_view(), name='item_list'),

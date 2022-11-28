@@ -3,7 +3,7 @@
 {% block content %}
 <div class="w-50 mx-auto form-row">
     <h3>{{ form_title }}</h3>
-    <p>{{ form_description }}</p>
+    {{ form_description }}
 
     <form method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
@@ -28,6 +28,10 @@
             </div>
         </div>
         {% endfor %}
+        <div class="mb-1">
+            {% block end_form %}
+            {% endblock end_form %}
+        </div>
 
         <button type="submit" class="btn btn-primary">{{ button_text }}</button>
     </form>
