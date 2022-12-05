@@ -29,4 +29,4 @@ class ItemDetail(DetailView):
             extra_context['user_rating'] = ItemRating.objects.filter(
                 user=self.request.user, item_id=self.kwargs['item_id']
                 ).first()
-        return context | extra_context
+        return {**context, **extra_context}
