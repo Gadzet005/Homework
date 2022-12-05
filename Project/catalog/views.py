@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView
 
-from .models import Item
+from catalog.models import Item
+from rating.models import ItemRating
 
 
 class ItemList(ListView):
@@ -20,3 +21,11 @@ class ItemDetail(DetailView):
     extra_context = {
         'title_name': 'Детали товара'
     }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        extra_context = ItemRating.objects.get_rating_of_item(self.object)
+        extra_context['user_rating'] = ItemRating.objects.filter(
+            user=self.request.user, item_id=self.kwargs['item_id']
+            ).first()
+        return context | extra_context
