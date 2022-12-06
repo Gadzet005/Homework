@@ -1,6 +1,6 @@
-from django.views.generic import FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls.base import reverse_lazy
+from django.views.generic import FormView
 
 from rating.forms import ItemRatingForm
 from rating.models import ItemRating

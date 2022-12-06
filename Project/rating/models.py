@@ -3,7 +3,6 @@ from django.db import models
 from catalog.models import Item
 from Users.models import User
 
-
 RATING_CHOICES = (
     (1, 'Ненависть'),
     (2, 'Неприязнь'),

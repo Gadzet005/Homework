@@ -14,9 +14,22 @@
         <h3>Описание:</h3>{{ item.text | safe }}
         <h3>Категория: {{ item.category }}</h3>
         <h3>Теги: {{ item.tags.all | join:", " }}</h3>
-        <h3>Средняя оценка: {{ item_rating_avg }}. Количество оценок: {{ item_rating_num }}</h3>
-        <a href="{% url 'rating:set_rating' item.pk %}"><h3>Оценить</h3></a>
+
+        {% if item_rating_num > 0 %}
+        <h3>Средняя оценка: {{ item_rating_avg }}</h3>
+        <h3>Количество оценок: {{ item_rating_num }}</h3>
+        {% else %}
+        <h3>Похоже этот товар еще никто не оценил...</h3>
+        {% endif %}
+        
+        {% if request.user.is_authenticated %}
+        {% if user_rating %}
         <h3>Ваша оценка: {{ user_rating }}</h3>
+        <a class="btn btn-secondary" href="{% url 'rating:set_rating' item.pk %}">Изменить оценку</a>
+        {% else %}
+        <a class="btn btn-secondary" href="{% url 'rating:set_rating' item.pk %}">Оценить</a>
+        {% endif %}
+        {% endif %}
     </div>
     <div class="text-center my-3">
         <a class="btn btn-primary" href="{% url 'catalog:item_list' %}"><h3>К списку товаров</h3></a>

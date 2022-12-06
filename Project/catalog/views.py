@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView, ListView
 
 from catalog.models import Item
 from rating.models import ItemRating
