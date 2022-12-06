@@ -2,6 +2,7 @@ import datetime
 
 from Users.models import User
 
+
 def extras(request):
     now = datetime.date.today()
     users = User.objects.filter(

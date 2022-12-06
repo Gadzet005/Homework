@@ -21,4 +21,7 @@ class ContextProcessorTests(TestCase):
             response.status_code, 200, 'Главная страница не работает'
             )
         self.assertIn('users_with_birthday', response.context)
-        self.assertEqual(len(response.context['users_with_birthday']), len(users))
+        self.assertEqual(
+            len(response.context['users_with_birthday']),
+            len(users)
+        )
