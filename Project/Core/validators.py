@@ -17,7 +17,7 @@ class AmazingTextValidator:
     def __call__(self, text):
         if self.words and self.pattern.search(text) is None:
             raise ValidationError(
-                f'Текст должен содержать одно из слов: {', '.join(self.words)}'
+                f'Текст должен содержать одно из слов: {", ".join(self.words)}'
                 )
 
         return text
