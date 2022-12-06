@@ -7,10 +7,10 @@ from Core.utils import FormStyleMixin
 class FeedbackForm(forms.ModelForm, FormStyleMixin):
     class Meta:
         model = Feedback
-        fields = ("text",)
+        fields = ('text',)
         help_texts = {
-            "text": "Введите ваше сообщение",
+            'text': 'Введите ваше сообщение',
         }
         widgets = {
-            "text": forms.Textarea(attrs={"cols": 60, "rows": 5}),
+            'text': forms.Textarea(attrs={'cols': 60, 'rows': 5}),
         }

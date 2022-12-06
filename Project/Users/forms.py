@@ -12,7 +12,7 @@ class RegisterUserForm(UserForms.UserCreationForm, FormStyleMixin):
 
 
 class LoginUserForm(UserForms.AuthenticationForm, FormStyleMixin):
-    username = forms.EmailField(label="Почта")
+    username = forms.EmailField(label='Почта')
 
 
 class ChangeUserPasswordForm(UserForms.PasswordChangeForm, FormStyleMixin):
@@ -31,7 +31,7 @@ class ResetUserPasswordConfirmForm(
 
 class UpdateUserProfileForm(UserForms.UserChangeForm, FormStyleMixin):
     birthday_date = forms.DateField(
-        label="День рождения", widget=forms.TextInput(attrs={"type": "date"})
+        label='День рождения', widget=forms.TextInput(attrs={'type': 'date'})
         )
     password = None
 

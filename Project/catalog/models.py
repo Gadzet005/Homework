@@ -60,7 +60,7 @@ class ImageGallery(models.Model):
         verbose_name='картинка', upload_to='uploads/gallery/%Y/%m'
         )
     item = models.ForeignKey(
-        "Item", verbose_name='товар', on_delete=models.CASCADE
+        'Item', verbose_name='товар', on_delete=models.CASCADE
         )
 
     class Meta:

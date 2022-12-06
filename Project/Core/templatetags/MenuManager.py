@@ -57,7 +57,7 @@ def get_main_menu(request):
     menu = []
     for elem in Menus.main_menu:
         user_group = UserGroup.get_user_group(request.user)
-        if user_group in elem.can_see or "all" in elem.can_see:
+        if user_group in elem.can_see or 'all' in elem.can_see:
             elem.is_active = elem.url_name == request.resolver_match.view_name
 
             if elem.sub_elems:
@@ -71,4 +71,4 @@ def get_main_menu(request):
 
             menu.append(elem)
 
-    return {"menu": menu}
+    return {'menu': menu}
