@@ -25,3 +25,6 @@ class ContextProcessorTests(TestCase):
             len(response.context['users_with_birthday']),
             len(users)
         )
+
+        for elem in users:
+            self.assertIn(elem, response.context['users_with_birthday'])
