@@ -12,6 +12,19 @@ class ContextProcessorTests(TestCase):
 
     def test_exist(self):
         now = datetime.date.today()
+        user = User(
+            email='test@test.com',
+            birthday_date=now,
+            password='123'
+        )
+        user.save()
+        tomorrow = now + datetime.timedelta(days=1)
+        user = User(
+            email='test2@test.com',
+            birthday_date=tomorrow,
+            password='123'
+        )
+        user.save()
         users = User.objects.filter(
             birthday_date__month=now.month,
             birthday_date__day=now.day,
