@@ -1,0 +1,14 @@
+{% load static %}
+
+<div class="container d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <ul class="nav nav-pills">
+        <li class="nav-item dropdown">
+            <p class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Именинники</p>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% for sub_elem in users_with_birthday %}
+                <li><a class="dropdown-item">{{ sub_elem.nickname }}: {{ sub_elem.email }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+</div>
