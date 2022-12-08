@@ -23,6 +23,10 @@ class ItemRatingManager(models.Manager):
                 )
             )
 
+    def get_rating_of_user(self, item, user):
+        if user.is_authenticated:
+            return self.get_queryset().filter(item=item, user=user).first()
+
 
 class ItemRating(models.Model):
     item = models.ForeignKey(

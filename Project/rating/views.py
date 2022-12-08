@@ -16,9 +16,9 @@ class CreateItemRating(LoginRequiredMixin, FormView):
     }
 
     def get_initial(self):
-        self.rating = ItemRating.objects.filter(
-            user=self.request.user, item_id=self.kwargs['item_id']
-            ).first()
+        self.rating = ItemRating.objects.get_rating_of_user(
+            self.kwargs['item_id'], self.request.user
+            )
         if self.rating:
             self.initial = {'rating': self.rating.rating}
         return super().get_initial()

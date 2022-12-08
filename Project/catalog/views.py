@@ -24,9 +24,8 @@ class ItemDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        extra_context = ItemRating.objects.get_rating_of_item(self.object)
-        if self.request.user.is_authenticated:
-            extra_context['user_rating'] = ItemRating.objects.filter(
-                user=self.request.user, item_id=self.kwargs['item_id']
-                ).first()
-        return {**context, **extra_context}
+        item_rating = ItemRating.objects.get_rating_of_item(self.object)
+        user_rating = ItemRating.objects.get_rating_of_user(
+            self.object, self.request.user
+            )
+        return {**context, **item_rating, 'user_rating': user_rating}
