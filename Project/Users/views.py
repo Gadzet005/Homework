@@ -13,9 +13,9 @@ class RegisterUser(CreateView):
     form_class = Forms.RegisterUserForm
     template_name = 'base_form.html'
     extra_context = {
-        "title_name": "Регистрация",
-        "button_text": "Создать аккаунт",
-        "form_title": "Регистрация",
+        'title_name': 'Регистрация',
+        'button_text': 'Создать аккаунт',
+        'form_title': 'Регистрация',
     }
     success_url = reverse_lazy('homepage:home')
 
@@ -30,9 +30,9 @@ class LoginUser(AuthViews.LoginView):
     form_class = Forms.LoginUserForm
     template_name = 'Users/login_form.html'
     extra_context = {
-        "title_name": "Вход",
-        "button_text": "Войти",
-        "form_title": "Вход в аккаунт",
+        'title_name': 'Вход',
+        'button_text': 'Войти',
+        'form_title': 'Вход в аккаунт',
     }
 
 
@@ -100,7 +100,7 @@ class UserPasswordResetComplete(AuthViews.PasswordResetCompleteView):
 
 
 class UserList(ListView):
-    template_name = "Users/user_list.html"
+    template_name = 'Users/user_list.html'
     queryset = User.objects.actived()
     context_object_name = 'users'
     extra_context = {
@@ -109,10 +109,10 @@ class UserList(ListView):
 
 
 class UserDetail(DetailView):
-    template_name = "Users/user_details.html"
+    template_name = 'Users/user_details.html'
     queryset = User.objects.actived()
-    pk_url_kwarg = "user_id"
-    context_object_name = "user"
+    pk_url_kwarg = 'user_id'
+    context_object_name = 'user'
     extra_context = {
         'title_name': 'Профиль пользователя'
     }

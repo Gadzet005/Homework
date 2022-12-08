@@ -10,9 +10,9 @@ class CreateItemRating(LoginRequiredMixin, FormView):
     form_class = ItemRatingForm
     template_name = 'base_form.html'
     extra_context = {
-        "title_name": "Оценить",
-        "button_text": "Оценить",
-        "form_title": "Оценка товара",
+        'title_name': 'Оценить',
+        'button_text': 'Оценить',
+        'form_title': 'Оценка товара',
     }
 
     def get_initial(self):

@@ -7,4 +7,4 @@ class FormStyleMixin(forms.Form):
 
         # Применяем ко всем полям стиль по умолчанию
         for field in self.visible_fields():
-            field.field.widget.attrs["class"] = "form-control"
+            field.field.widget.attrs['class'] = 'form-control'
