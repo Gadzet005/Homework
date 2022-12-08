@@ -40,7 +40,11 @@ class ItemRating(models.Model):
     objects = ItemRatingManager()
 
     class Meta:
-        unique_together = ('item', 'user',)
+        constraints = (
+            models.UniqueConstraint(
+                fields=('item', 'user'), name='item_user_unique'
+                ),
+        )
 
     def __str__(self):
         return str(self.rating)
